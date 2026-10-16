@@ -32,6 +32,7 @@ class Equipe
     private Collection $inscriptions;
 
     #[ORM\ManyToOne(inversedBy: 'equipes')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Inscription $responsable = null;
 
     public function __construct()

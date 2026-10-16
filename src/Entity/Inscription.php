@@ -33,6 +33,7 @@ class Inscription
     private ?Participant $participant = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Equipe $equipe = null;
 
     /**
