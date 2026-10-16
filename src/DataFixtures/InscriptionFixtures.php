@@ -6,7 +6,7 @@ use App\Entity\Inscription;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class HackathonFixtures extends Fixture
+class InscriptionFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {

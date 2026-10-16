@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hackathons{% endblock %}
+
+{% block body %}
+    <h1>Liste des hackathons</h1>
+    <table>
+        <thead>
+        <tr><th>ID</th><th>Thème</th><th>Lieu</th><th>Ville</th><th>Début</th><th>Fin</th></tr>
+        </thead>
+        <tbody>
+        {% for h in hackathons %}
+            <tr>
+                <td>{{ h.id }}</td>
+                <td>{{ h.theme }}</td>
+                <td>{{ h.lieu }}</td>
+                <td>{{ h.ville }}</td>
+                <td>{{ h.dateHeureDebut|date('d/m/Y H:i') }}</td>
+                <td>{{ h.dateHeureFin|date('d/m/Y H:i') }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="6">Aucun hackathon.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

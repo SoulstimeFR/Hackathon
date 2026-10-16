@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrganisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrganisateurRepository::class)]
@@ -24,6 +26,17 @@ class Organisateur
 
     #[ORM\Column(length: 180)]
     private ?string $email = null;
+
+    /**
+     * @var Collection<int, Hackathon>
+     */
+    #[ORM\ManyToMany(targetEntity: Hackathon::class, mappedBy: 'organisateurs')]
+    private Collection $hackathons;
+
+    public function __construct()
+    {
+        $this->hackathons = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +87,33 @@ class Organisateur
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Hackathon>
+     */
+    public function getHackathons(): Collection
+    {
+        return $this->hackathons;
+    }
+
+    public function addHackathon(Hackathon $hackathon): static
+    {
+        if (!$this->hackathons->contains($hackathon)) {
+            $this->hackathons->add($hackathon);
+            $hackathon->addOrganisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHackathon(Hackathon $hackathon): static
+    {
+        if ($this->hackathons->removeElement($hackathon)) {
+            $hackathon->removeOrganisateur($this);
+        }
 
         return $this;
     }
