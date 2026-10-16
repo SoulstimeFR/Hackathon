@@ -17,7 +17,7 @@ class HackathonFixtures extends Fixture implements DependentFixtureInterface
         $h->setDateHeureFin(new \DateTimeImmutable('2026-11-21 18:00'));
         $h->setLieu('Lycée La Colinière');
         $h->setVille('Nantes');
-        $h->setTheme('Intelligence artificielle');
+        $h->setTheme('Développement');
         $h->addOrganisateur($this->getReference('organisateur_1', Organisateur::class));
         $manager->persist($h);
         $this->addReference('hackathon_1', $h);
