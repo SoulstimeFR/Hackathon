@@ -18,7 +18,7 @@ class ParticipantFixtures extends Fixture
         $p->setDateNaissance(new \DateTimeImmutable('2004-05-12'));
         $p->setLienPortfolio('https://lucie-martin.example');
         $manager->persist($p);
-
+        $this->addReference('participant_1', $p);
         $manager->flush();
     }
 }
