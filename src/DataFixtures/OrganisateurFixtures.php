@@ -16,6 +16,7 @@ class OrganisateurFixtures extends Fixture
         $o->setSiteweb('https://digital-nantes.example');
         $o->setEmail('contact@digital-nantes.example');
         $manager->persist($o);
+        $this->addReference('organisateur_1', $o);
 
         $manager->flush();
     }
