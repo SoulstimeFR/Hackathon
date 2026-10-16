@@ -1,3 +1,5 @@
+### Veuillez m'excuser pour le retard de mon rendu du TP1. J'ai été malade pendant deux jours et je n'étais pas à jour dans mon travail. Je pensais également que le TP1 était à rendre pour vendredi 18h, comme le TP2.
+
 # TP1 - Hackathon : mise en place de l'ORM (Object Relational Mapping)
 
 ## Prérequis
