@@ -1,3 +1,16 @@
 body {
-    background-color: skyblue;
+    background-color: white;
+    color: black;
+}
+
+@font-face {
+    font-family: 'Monocraft';
+    src: url('/fonts/Monocraft-nerd-fonts-patched-Monocraft.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Monocraft', monospace;
 }
