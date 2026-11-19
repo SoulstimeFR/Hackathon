@@ -100,11 +100,10 @@ GET http://localhost:8000/api/hackathons
 ```
 
 Résultat (extrait) :
-<!-- TODO : remplacer par la réponse réelle d'Insomnia (les id ci-dessous sont à null car ce résultat vient d'un test de sérialisation sans base de données) -->
 ```json
 [
     {
-        "id": null,
+        "id": 13,
         "dateHeureDebut": "2026-11-20T09:00:00+00:00",
         "dateHeureFin": "2026-11-21T18:00:00+00:00",
         "lieu": "Lycée La Colinière",
@@ -112,7 +111,7 @@ Résultat (extrait) :
         "theme": "Développement",
         "organisateurs": [
             {
-                "id": null,
+                "id": 15,
                 "statut": "Association",
                 "nom": "Digital Nantes",
                 "siteweb": "https://digital-nantes.example",
@@ -121,14 +120,14 @@ Résultat (extrait) :
         ],
         "projets": [
             {
-                "id": null,
+                "id": 13,
                 "description": "Application de covoiturage pour étudiants.",
                 "retenu": true
             }
         ],
         "inscriptions": [
             {
-                "id": null,
+                "id": 15,
                 "num": 1,
                 "date": "2026-10-01T14:30:00+00:00",
                 "competence": "Développement web"
@@ -139,7 +138,6 @@ Résultat (extrait) :
 ```
 
 Test d'un cas d'erreur (ex. `GET /api/hackathons/9999` → 404) :
-<!-- TODO : coller la réponse réelle d'Insomnia (statut 404) -->
 ```json
 {
     "error": "Hackathon introuvable"
@@ -148,7 +146,3 @@ Test d'un cas d'erreur (ex. `GET /api/hackathons/9999` → 404) :
 
 ## Difficultés rencontrées
 La principale difficulté a été de choisir quels attributs ajouter à quels groupes : il faut que les attributs simples d'une entité soient dans les groupes des entités qui la référencent, mais pas ses relations, sinon la boucle revient. Il faut aussi penser au côté inverse des relations, qui n'apparaît qu'une fois les données chargées depuis la base.
-
-## Ressources
-- Moodle : TP4
-- https://symfony.com/doc/current/serializer.html
