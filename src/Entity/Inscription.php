@@ -6,6 +6,7 @@ use App\Repository\InscriptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: InscriptionRepository::class)]
 class Inscription
@@ -13,27 +14,34 @@ class Inscription
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['inscription:read', 'participant:read', 'hackathon:read', 'equipe:read'])]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['inscription:read', 'participant:read', 'hackathon:read', 'equipe:read'])]
     private ?int $num = null;
 
     #[ORM\Column]
+    #[Groups(['inscription:read', 'participant:read', 'hackathon:read', 'equipe:read'])]
     private ?\DateTimeImmutable $date = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['inscription:read', 'participant:read', 'hackathon:read', 'equipe:read'])]
     private ?string $competence = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['inscription:read'])]
     private ?Hackathon $hackathon = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['inscription:read'])]
     private ?Participant $participant = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
     #[ORM\JoinColumn(onDelete: 'SET NULL')]
+    #[Groups(['inscription:read'])]
     private ?Equipe $equipe = null;
 
     /**

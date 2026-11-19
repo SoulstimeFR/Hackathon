@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
 class Participant
@@ -14,30 +15,38 @@ class Participant
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 20)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?\DateTimeImmutable $dateNaissance = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['participant:read', 'inscription:read'])]
     private ?string $lienPortfolio = null;
 
     /**
      * @var Collection<int, Inscription>
      */
     #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'participant')]
+    #[Groups(['participant:read'])]
     private Collection $inscriptions;
 
     public function __construct()

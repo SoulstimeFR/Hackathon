@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: ProjetRepository::class)]
 class Projet
@@ -14,22 +15,27 @@ class Projet
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['projet:read', 'hackathon:read', 'equipe:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['projet:read', 'hackathon:read', 'equipe:read'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['projet:read', 'hackathon:read', 'equipe:read'])]
     private ?bool $retenu = null;
 
     #[ORM\ManyToOne(inversedBy: 'projets')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['projet:read'])]
     private ?Hackathon $hackathon = null;
 
     /**
      * @var Collection<int, Equipe>
      */
     #[ORM\OneToMany(targetEntity: Equipe::class, mappedBy: 'projet')]
+    #[Groups(['projet:read'])]
     private Collection $equipes;
 
     public function __construct()
