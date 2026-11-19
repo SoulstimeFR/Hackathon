@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ hackathon.id }}{% endblock %}
+
+{% block body %}
+    <h1>{{ hackathon.id }}</h1>
+    <p>{{ hackathon.lieu }}</p>
+
+    <a href="{{ path('root') }}">← Retour à l'accueil</a>
+{% endblock %}

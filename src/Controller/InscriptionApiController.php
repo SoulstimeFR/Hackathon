@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api/inscriptions', name: 'api_inscription_')]
-final class InscriptionApiController extends AbstractController
+class InscriptionApiController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
     public function index(InscriptionRepository $repository): JsonResponse

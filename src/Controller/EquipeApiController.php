@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api/equipes', name: 'api_equipe_')]
-final class EquipeApiController extends AbstractController
+class EquipeApiController extends AbstractController
 {
     #[Route('', name: 'index', methods: ['GET'])]
     public function index(EquipeRepository $repository): JsonResponse

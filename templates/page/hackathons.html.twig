@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>Liste des Hackathons</h1>
+
+    <table>
+    {% for hackathon in hackathons %}
+        <tr>
+            <td><a href="{{ path('hackathons_show', {'id': hackathon.id}) }}">Id : {{ hackathon.id }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
